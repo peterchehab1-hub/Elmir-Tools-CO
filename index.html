@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elmir Tools & Co | Online Automotive & Workshop Equipment Catalog</title>
+  <meta name="description" content="Official equipment catalog for Elmir Tools & Co. High performance automotive garage tools, hydraulic lifts, pneumatic tools, diagnostic sets, and workshop equipment.">
+  <meta name="keywords" content="Elmir Tools, Garage Equipment, Automotive Tools, Car Lifts, Hydraulic Jacks, Diagnostic Tools, Lebanon Workshop Equipment">
+  <meta name="author" content="Elmir Antoine Chehab">
+  <meta property="og:title" content="Elmir Tools & Co - Automotive & Workshop Equipment Catalog">
+  <meta property="og:description" content="Explore 240+ professional automotive tools, garage machinery, hydraulic jacks, diagnostic scanners, and workshop equipment.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Inter & Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="theme-dark">
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-info">
+        <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="location">Lebanon • Worldwide Inquiries</span></span>
+        <span class="divider">|</span>
+        <a href="tel:+96176339423"><i class="fa-solid fa-phone"></i> (+961) 76 339 423</a>
+        <span class="divider">|</span>
+        <a href="mailto:elmirb21@gmail.com"><i class="fa-solid fa-envelope"></i> elmirb21@gmail.com</a>
+      </div>
+      <div class="top-actions">
+        <!-- Theme Toggle Switch -->
+        <button id="themeToggle" class="btn-theme" title="Toggle Light / Dark Mode" aria-label="Toggle Light or Dark Mode">
+          <i class="fa-solid fa-sun" id="themeIcon"></i>
+          <span id="themeLabel">Light Mode</span>
+        </button>
+        <!-- Language Switcher -->
+        <button id="langToggle" class="btn-lang" title="Toggle Language / تغيير اللغة" aria-label="Toggle Language">
+          <i class="fa-solid fa-globe"></i>
+          <span id="langLabel">العربية</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header" id="mainHeader">
+    <div class="container header-container">
+      <div class="brand-group">
+        <a href="#" class="brand-logo" id="homeLogo">
+          <div class="logo-icon"><i class="fa-solid fa-wrench"></i></div>
+          <div class="logo-text">
+            <span class="brand-name">ELMIR <span class="accent-text">TOOLS & CO</span></span>
+            <span class="brand-sub" data-i18n="brand_sub">Garage Equipment & Workshop Solutions</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Quick Search Bar in Header -->
+      <div class="header-search-wrapper">
+        <div class="search-input-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="searchInput" placeholder="Search 240+ tools by name, REF #, or part #..." autocomplete="off">
+          <button id="clearSearchBtn" class="btn-clear-search" style="display: none;" title="Clear search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Header Actions -->
+      <div class="header-controls">
+        <button id="quoteDrawerBtn" class="btn-quote-cart" title="View Quote Request List">
+          <i class="fa-solid fa-clipboard-list"></i>
+          <span class="quote-btn-text" data-i18n="quote_list">Quote List</span>
+          <span id="quoteBadge" class="quote-badge">0</span>
+        </button>
+        <a href="https://wa.me/96176339423" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-direct">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span data-i18n="chat_whatsapp">Direct Inquiry</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span data-i18n="hero_badge">Official Equipment Catalog 2024-2025</span>
+        </div>
+        <h1 class="hero-title">
+          <span data-i18n="hero_title_1">Professional Automotive</span>
+          <span class="hero-gradient" data-i18n="hero_title_2">Tools & Garage Machinery</span>
+        </h1>
+        <p class="hero-desc" data-i18n="hero_desc">
+          Browse our complete catalog of 240 high-precision automotive workshop tools, heavy duty vehicle lifts, pneumatic impact guns, hydraulic presses, and diagnostic equipment.
+        </p>
+
+        <!-- Catalog Quick Metrics -->
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-num">240</span>
+            <span class="stat-label" data-i18n="stat_tools">Tools & Machines</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">9</span>
+            <span class="stat-label" data-i18n="stat_cats">Core Categories</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">100%</span>
+            <span class="stat-label" data-i18n="stat_verified">Industrial Quality</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">24/7</span>
+            <span class="stat-label" data-i18n="stat_inquiry">WhatsApp Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Catalog Content Section -->
+  <main class="catalog-section" id="catalog">
+    <div class="container">
+      
+      <!-- Category Navigation Pills -->
+      <div class="categories-nav-wrapper">
+        <div class="categories-scroll" id="categoriesContainer">
+          <!-- Categories rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Controls & Filter Toolbar -->
+      <div class="catalog-toolbar">
+        <div class="toolbar-left">
+          <span class="results-counter" id="resultsCount">
+            <span data-i18n="showing">Showing</span> <strong id="currentCount">0</strong> <span data-i18n="of">of</span> <strong>240</strong> <span data-i18n="products">products</span>
+          </span>
+          <div id="activeFilterTags" class="active-filter-tags"></div>
+        </div>
+
+        <div class="toolbar-right">
+          <!-- Quick Drive Size / Tag Filter -->
+          <div class="filter-select-wrapper">
+            <label for="tagFilterSelect" class="sr-only" data-i18n="filter_by_spec">Filter by spec</label>
+            <select id="tagFilterSelect" class="filter-select">
+              <option value="" data-i18n="all_specifications">All Specifications</option>
+              <option value="1/2">1/2" Drive Tools</option>
+              <option value="3/8">3/8" Drive Tools</option>
+              <option value="1/4">1/4" Drive Tools</option>
+              <option value="3/4">3/4" Drive Tools</option>
+              <option value="Hydraulic">Hydraulic / Jacks</option>
+              <option value="Pneumatic">Pneumatic / Air</option>
+              <option value="Diagnostic">Diagnostics / Gauges</option>
+              <option value="Body">Body Repair & Welding</option>
+            </select>
+          </div>
+
+          <!-- Sort Selector -->
+          <div class="filter-select-wrapper">
+            <label for="sortSelect" class="sr-only" data-i18n="sort_by">Sort by</label>
+            <select id="sortSelect" class="filter-select">
+              <option value="ref_asc" data-i18n="sort_ref_asc">Ref Number: Low to High</option>
+              <option value="ref_desc" data-i18n="sort_ref_desc">Ref Number: High to Low</option>
+              <option value="name_asc" data-i18n="sort_name_asc">Name: A to Z</option>
+              <option value="name_desc" data-i18n="sort_name_desc">Name: Z to A</option>
+            </select>
+          </div>
+
+          <!-- View Mode Toggles -->
+          <div class="view-mode-group">
+            <button id="viewGridBtn" class="btn-view active" title="Grid View" aria-label="Grid View">
+              <i class="fa-solid fa-table-cells-large"></i>
+            </button>
+            <button id="viewListBtn" class="btn-view" title="List View" aria-label="List View">
+              <i class="fa-solid fa-list"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Cards Container -->
+      <div class="products-grid view-grid" id="productsContainer">
+        <!-- Dynamic Product Cards rendered via JS -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon"><i class="fa-solid fa-toolbox"></i></div>
+        <h3 data-i18n="no_results_title">No tools found matching your criteria</h3>
+        <p data-i18n="no_results_desc">Try searching for a different tool name, part number, reference number, or resetting active filters.</p>
+        <button id="resetFiltersBtn" class="btn-reset-filters">
+          <i class="fa-solid fa-rotate-left"></i> <span data-i18n="reset_filters">Reset All Filters</span>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Product Detail Modal -->
+  <div class="modal-overlay" id="productModal" role="dialog" aria-modal="true" style="display: none;">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="closeModalBtn" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-body" id="modalBody">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Quote Request List Drawer (Sidebar) -->
+  <div class="drawer-overlay" id="drawerOverlay" style="display: none;"></div>
+  <aside class="quote-drawer" id="quoteDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <div>
+          <h3 data-i18n="quote_drawer_title">Quote Request List</h3>
+          <span class="drawer-subtitle" id="drawerItemCount">0 items selected</span>
+        </div>
+      </div>
+      <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close drawer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="drawer-content" id="drawerItemsList">
+      <!-- Dynamic list of items in quote -->
+    </div>
+
+    <div class="drawer-footer">
+      <div class="drawer-actions">
+        <button id="whatsappQuoteBtn" class="btn-drawer-whatsapp">
+          <i class="fa-brands fa-whatsapp"></i> <span data-i18n="send_quote_whatsapp">Send Quote via WhatsApp</span>
+        </button>
+        <button id="copyQuoteBtn" class="btn-drawer-copy">
+          <i class="fa-solid fa-copy"></i> <span data-i18n="copy_list">Copy List</span>
+        </button>
+        <button id="clearQuoteBtn" class="btn-drawer-clear">
+          <i class="fa-solid fa-trash-can"></i> <span data-i18n="clear_list">Clear</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Quick Floating Action for Mobile -->
+  <div class="floating-quote-btn" id="floatingQuoteBtn">
+    <button id="mobileQuoteTrigger" aria-label="Open Quote List">
+      <i class="fa-solid fa-clipboard-list"></i>
+      <span id="mobileQuoteBadge" class="quote-badge">0</span>
+    </button>
+  </div>
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">
+          <i class="fa-solid fa-wrench"></i>
+          <span>ELMIR TOOLS & CO</span>
+        </div>
+        <p class="footer-about" data-i18n="footer_about">
+          Premier supplier of heavy duty automotive equipment, garage tools, and hydraulic machinery in Lebanon. Serving auto repair shops, mechanics, and dealerships with premium industrial-grade tools.
+        </p>
+        <div class="footer-contact-info">
+          <div><i class="fa-solid fa-user"></i> Elmir Antoine Chehab</div>
+          <div><a href="tel:+96176339423"><i class="fa-solid fa-phone"></i> (+961) 76 339 423</a></div>
+          <div><a href="mailto:elmirb21@gmail.com"><i class="fa-solid fa-envelope"></i> elmirb21@gmail.com</a></div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer_quick_cats">Key Categories</h4>
+        <ul class="footer-links" id="footerCatsList">
+          <li><a href="#" data-cat="lifting_equipment" data-i18n="cat_lifting">Lifts & Lifting Equipment</a></li>
+          <li><a href="#" data-cat="wrenches_hand_tools" data-i18n="cat_wrenches">Wrenches & Socket Sets</a></li>
+          <li><a href="#" data-cat="pneumatic_air_tools" data-i18n="cat_pneumatic">Pneumatic & Air Tools</a></li>
+          <li><a href="#" data-cat="diagnostic_testing" data-i18n="cat_diagnostic">Diagnostic & Electrical</a></li>
+          <li><a href="#" data-cat="body_repair_welding" data-i18n="cat_body">Body Repair & Welding</a></li>
+          <li><a href="#" data-cat="engine_oil_service" data-i18n="cat_engine">Engine & Fluid Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer_inquiry_heading">Direct Inquiries</h4>
+        <p class="footer-text" data-i18n="footer_inquiry_text">
+          Need a personalized quotation, bulk pricing, or international delivery details? Contact us directly via WhatsApp or phone.
+        </p>
+        <a href="https://wa.me/96176339423" target="_blank" rel="noopener noreferrer" class="btn-footer-cta">
+          <i class="fa-brands fa-whatsapp"></i> (+961) 76 339 423
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p>© 2025 Elmir Tools & Co. All rights reserved.</p>
+        <p class="powered-by">
+          <span>Fast Static Delivery via Cloudflare Pages</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="toast-notification" style="display: none;"></div>
+
+  <!-- Application Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>
