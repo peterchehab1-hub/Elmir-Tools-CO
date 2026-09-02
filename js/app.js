@@ -22,7 +22,7 @@
       hero_badge: 'Official Equipment Catalog 2024-2025',
       hero_title_1: 'Professional Automotive',
       hero_title_2: 'Tools & Garage Machinery',
-      hero_desc: 'Browse our complete catalog of 240 high-precision automotive workshop tools, heavy duty vehicle lifts, pneumatic impact guns, hydraulic presses, and diagnostic equipment.',
+      hero_desc: 'Browse our complete catalog of 258+ high-precision automotive workshop tools, heavy duty vehicle lifts, pneumatic impact guns, hydraulic presses, lubrication equipment, and diagnostic tools.',
       stat_tools: 'Tools & Machines',
       stat_cats: 'Core Categories',
       stat_verified: 'Industrial Quality',
@@ -80,7 +80,7 @@
       hero_badge: 'الكتالوج الرسمي المعتمد ٢٠٢٤-٢٠٢٥',
       hero_title_1: 'معدات وعدد سيارات',
       hero_title_2: 'احترافية للورش والميكانيك',
-      hero_desc: 'تصفح كتالوجنا الشامل الذي يضم ٢٤٠ أداة ومعدة عالية الدقة لكراجات السيارات، بما في ذلك عوارف الرفع، مسدسات الهواء، المكابس الهيدروليكية، وأجهزة الفحص الحديثة.',
+      hero_desc: 'تصفح كتالوجنا الشامل الذي يضم أكثر من ٢٥٨ أداة ومعدة عالية الدقة لكراجات السيارات، بما في ذلك عوارف الرفع، مسدسات الهواء، المكابس الهيدروليكية، ومعدات سحب وتغيير الزيوت والفحص الحديثة.',
       stat_tools: 'أداة ومعدة',
       stat_cats: 'أقسام رئيسية',
       stat_verified: 'جودة صناعية ممتازة',
@@ -196,7 +196,9 @@
     closeModalBtn: document.getElementById('closeModalBtn'),
     toast: document.getElementById('toast'),
     homeLogo: document.getElementById('homeLogo'),
-    footerCatsList: document.getElementById('footerCatsList')
+    footerCatsList: document.getElementById('footerCatsList'),
+    totalCount: document.getElementById('totalCount'),
+    statToolsNum: document.getElementById('statToolsNum')
   };
 
   // --- Initialization ---
@@ -205,6 +207,8 @@
     setLanguage(currentLang);
     bindEvents();
     await loadCatalog();
+    if (dom.totalCount) dom.totalCount.textContent = catalog.length;
+    if (dom.statToolsNum) dom.statToolsNum.textContent = catalog.length;
     renderCategories();
     renderProducts();
     updateQuoteUI();
@@ -259,8 +263,8 @@
 
     // Update search input placeholder
     dom.searchInput.placeholder = lang === 'ar' 
-      ? 'ابحث بين ٢٤٠ أداة بالاسم، رقم المرجع، أو الكود...'
-      : 'Search 240+ tools by name, REF #, or part #...';
+      ? `ابحث بين ${catalog.length || 258}+ أداة بالاسم، رقم المرجع، أو الكود...`
+      : `Search ${catalog.length || 258}+ tools by name, REF #, or part #...`;
 
     // Update theme button label for current language
     if (dom.themeLabel) {
