@@ -1,16 +1,20 @@
-# Elmir Tools & Co - Online Automotive & Workshop Catalog
+# Elmir / Garage Equipment - Online Automotive & Workshop Catalog
 
-Modern, responsive, bilingual (English & Arabic) online catalog for **Elmir Tools & Co**, showcasing 240+ professional automotive tools, garage machinery, hydraulic vehicle lifts, and diagnostic equipment.
+Modern, responsive, bilingual (English & Arabic) online catalog for **Elmir / Garage Equipment**, showcasing 270+ professional automotive tools, garage machinery, hydraulic vehicle lifts, diagnostic scanners, and workshop equipment.
 
 Designed and optimized for static hosting on **Cloudflare Pages** and deployment via **Git**.
 
 ---
 
-## 🌟 Key Features
+## 🚀 Live Demo & Repository
+- **Production Website**: [https://elmir-tools-co.pages.dev/](https://elmir-tools-co.pages.dev/)
+- **GitHub Repository**: [https://github.com/peterchehab1-hub/Elmir-Tools-CO](https://github.com/peterchehab1-hub/Elmir-Tools-CO)
 
-- **240 Catalog Products**: Fully digitized data from the official garage equipment binder.
+## ✨ Key Features
+- **271 Catalog Products**: Fully digitized data from official garage equipment catalogs and equipment sheets.
+- **Strict Price Filtering**: 100% compliant with zero pricing data exposed.
 - **Bilingual Interface**: Seamless English (LTR) and Arabic (RTL) switching with tailored typography (`Inter` & `Cairo`).
-- **Live Search & Filters**: Instant client-side search across English & Arabic names, Reference Numbers, Part Numbers (`ET-001` to `ET-240`), and specifications.
+- **Live Search & Filters**: Instant client-side search across English & Arabic names, Reference Numbers, Part Numbers (`ET-001` to `ET-271`), and specifications.
 - **Category Navigation**: 9 core categories with real-time product counts.
 - **Quote Request Cart**: Users can select multiple tools and generate an instant formatted inquiry message sent directly to WhatsApp (`+961 76 339 423`).
 - **Zero Pricing Exposed**: Adheres strictly to the quote-request workflow with no raw pricing displayed.
