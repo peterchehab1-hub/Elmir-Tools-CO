@@ -218,6 +218,33 @@
     </div>
   </div>
 
+  <!-- Retractable Left Side Category Tab Trigger -->
+  <button id="categoryTabTrigger" class="category-tab-trigger" title="Browse Categories / تصفح الأقسام" aria-label="Open Categories Sidebar">
+    <div class="cat-tab-icon"><i class="fa-solid fa-layer-group"></i></div>
+    <span class="cat-tab-text" data-i18n="side_categories_tab">CATEGORIES</span>
+  </button>
+
+  <!-- Retractable Categories Drawer -->
+  <div class="cat-drawer-overlay" id="catDrawerOverlay" style="display: none;"></div>
+  <aside class="cat-drawer" id="catDrawer">
+    <div class="drawer-header cat-drawer-header">
+      <div class="drawer-title-group">
+        <div class="cat-drawer-title-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div>
+          <h3 data-i18n="cat_drawer_title">Equipment Categories</h3>
+          <span class="drawer-subtitle" data-i18n="cat_drawer_sub">Browse by workshop equipment type</span>
+        </div>
+      </div>
+      <button class="drawer-close-btn" id="closeCatDrawerBtn" aria-label="Close categories">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="cat-drawer-content" id="catDrawerList">
+      <!-- Rendered dynamically via JS -->
+    </div>
+  </aside>
+
   <!-- Quote Request List Drawer (Sidebar) -->
   <div class="drawer-overlay" id="drawerOverlay" style="display: none;"></div>
   <aside class="quote-drawer" id="quoteDrawer">

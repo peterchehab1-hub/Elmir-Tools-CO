@@ -70,7 +70,10 @@
       toast_removed: 'Removed from Quote List!',
       toast_copied: 'Quote list copied to clipboard!',
       mode_light: 'Light Mode',
-      mode_dark: 'Dark Mode'
+      mode_dark: 'Dark Mode',
+      side_categories_tab: 'CATEGORIES',
+      cat_drawer_title: 'Equipment Categories',
+      cat_drawer_sub: 'Browse by workshop equipment type'
     },
     ar: {
       location: 'لبنان • طلبات واستفسارات لجميع المناطق',
@@ -128,7 +131,10 @@
       toast_removed: 'تمت الإزالة من اللائحة!',
       toast_copied: 'تم نسخ لائحة الطلب بنجاح!',
       mode_light: 'الوضع الفاتح',
-      mode_dark: 'الوضع الداكن'
+      mode_dark: 'الوضع الداكن',
+      side_categories_tab: 'الأقسام',
+      cat_drawer_title: 'أقسام المعدات والعدد',
+      cat_drawer_sub: 'تصفح حسب نوع المعدات والأدوات'
     }
   };
 
@@ -179,6 +185,11 @@
     viewListBtn: document.getElementById('viewListBtn'),
     emptyState: document.getElementById('emptyState'),
     resetFiltersBtn: document.getElementById('resetFiltersBtn'),
+    categoryTabTrigger: document.getElementById('categoryTabTrigger'),
+    catDrawer: document.getElementById('catDrawer'),
+    catDrawerOverlay: document.getElementById('catDrawerOverlay'),
+    closeCatDrawerBtn: document.getElementById('closeCatDrawerBtn'),
+    catDrawerList: document.getElementById('catDrawerList'),
     quoteDrawerBtn: document.getElementById('quoteDrawerBtn'),
     mobileQuoteTrigger: document.getElementById('mobileQuoteTrigger'),
     quoteBadge: document.getElementById('quoteBadge'),
@@ -337,6 +348,17 @@
     // Reset filters
     dom.resetFiltersBtn.addEventListener('click', resetFilters);
 
+    // Category retractable drawer triggers
+    if (dom.categoryTabTrigger) {
+      dom.categoryTabTrigger.addEventListener('click', toggleCatDrawer);
+    }
+    if (dom.closeCatDrawerBtn) {
+      dom.closeCatDrawerBtn.addEventListener('click', closeCatDrawer);
+    }
+    if (dom.catDrawerOverlay) {
+      dom.catDrawerOverlay.addEventListener('click', closeCatDrawer);
+    }
+
     // Quote drawer triggers
     dom.quoteDrawerBtn.addEventListener('click', openDrawer);
     dom.mobileQuoteTrigger.addEventListener('click', openDrawer);
@@ -358,6 +380,7 @@
       if (e.key === 'Escape') {
         closeModal();
         closeDrawer();
+        closeCatDrawer();
       }
     });
 
@@ -380,6 +403,31 @@
     });
   }
 
+  // --- Category Drawer Controls ---
+  function openCatDrawer() {
+    if (dom.catDrawer && dom.catDrawerOverlay) {
+      dom.catDrawer.classList.add('open');
+      dom.catDrawerOverlay.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeCatDrawer() {
+    if (dom.catDrawer && dom.catDrawerOverlay) {
+      dom.catDrawer.classList.remove('open');
+      dom.catDrawerOverlay.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+
+  function toggleCatDrawer() {
+    if (dom.catDrawer && dom.catDrawer.classList.contains('open')) {
+      closeCatDrawer();
+    } else {
+      openCatDrawer();
+    }
+  }
+
   function resetFilters() {
     activeCategory = 'all';
     searchQuery = '';
@@ -399,28 +447,72 @@
 
   // --- Category Navigation ---
   function renderCategories() {
-    dom.categoriesContainer.innerHTML = '';
-    CATEGORIES.forEach((cat) => {
-      const btn = document.createElement('button');
-      btn.className = `cat-pill ${activeCategory === cat.id ? 'active' : ''}`;
-      
-      const count = cat.id === 'all' 
-        ? catalog.length 
-        : catalog.filter((item) => item.category_id === cat.id).length;
+    // 1. Horizontal Scrollable Pills Bar
+    if (dom.categoriesContainer) {
+      dom.categoriesContainer.innerHTML = '';
+      CATEGORIES.forEach((cat) => {
+        const btn = document.createElement('button');
+        btn.className = `cat-pill ${activeCategory === cat.id ? 'active' : ''}`;
+        
+        const count = cat.id === 'all' 
+          ? catalog.length 
+          : catalog.filter((item) => item.category_id === cat.id).length;
 
-      const title = currentLang === 'ar' ? cat.ar : cat.en;
-      btn.innerHTML = `
-        <i class="fa-solid ${cat.icon}"></i>
-        <span>${title}</span>
-        <span class="cat-pill-count">${count}</span>
-      `;
+        const title = currentLang === 'ar' ? cat.ar : cat.en;
+        btn.innerHTML = `
+          <i class="fa-solid ${cat.icon}"></i>
+          <span>${title}</span>
+          <span class="cat-pill-count">${count}</span>
+        `;
 
-      btn.addEventListener('click', () => {
-        setCategory(cat.id);
+        btn.addEventListener('click', () => {
+          setCategory(cat.id);
+        });
+
+        dom.categoriesContainer.appendChild(btn);
       });
+    }
 
-      dom.categoriesContainer.appendChild(btn);
-    });
+    // 2. Retractable Side Drawer List
+    if (dom.catDrawerList) {
+      dom.catDrawerList.innerHTML = '';
+      CATEGORIES.forEach((cat) => {
+        const itemBtn = document.createElement('button');
+        itemBtn.className = `cat-drawer-item ${activeCategory === cat.id ? 'active' : ''}`;
+        itemBtn.type = 'button';
+
+        const count = cat.id === 'all' 
+          ? catalog.length 
+          : catalog.filter((item) => item.category_id === cat.id).length;
+
+        const title = currentLang === 'ar' ? cat.ar : cat.en;
+        const subTitle = currentLang === 'ar' ? cat.en : cat.ar;
+
+        itemBtn.innerHTML = `
+          <div class="cat-drawer-item-left">
+            <div class="cat-drawer-item-icon">
+              <i class="fa-solid ${cat.icon}"></i>
+            </div>
+            <div class="cat-drawer-item-labels">
+              <span class="cat-drawer-item-title">${title}</span>
+              <span class="cat-drawer-item-sub">${subTitle}</span>
+            </div>
+          </div>
+          <span class="cat-drawer-item-count">${count}</span>
+        `;
+
+        itemBtn.addEventListener('click', () => {
+          setCategory(cat.id);
+          closeCatDrawer();
+          const catalogEl = document.getElementById('catalog');
+          if (catalogEl) {
+            catalogEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+
+        dom.catDrawerList.appendChild(itemBtn);
+      });
+    }
   }
 
   // --- Filter & Sort Logic ---
