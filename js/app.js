@@ -558,7 +558,7 @@
   function openModal(item) {
     const inQuote = quoteItems.includes(item.id);
     const catLabel = currentLang === 'ar' ? item.category_ar : item.category_en;
-    const waText = encodeURIComponent(`Hello Elmir / Garage Equipment,\nI am inquiring about:\n- Tool: ${item.name_en} (${item.name_ar})\n- REF #: ${item.id}\n- Part No: ${item.part_number}\nPlease provide pricing and availability.`);
+    const waText = encodeURIComponent(`Hello Elmir Garage Equipment,\nI am inquiring about:\n- Tool: ${item.name_en} (${item.name_ar})\n- REF #: ${item.id}\n- Part No: ${item.part_number}\nPlease provide pricing and availability.`);
 
     dom.modalBody.innerHTML = `
       <div class="modal-grid">
@@ -730,7 +730,7 @@
   }
 
   function generateQuoteSummaryText() {
-    let summary = `*ELMIR / GARAGE EQUIPMENT - Quote Inquiry*\n`;
+    let summary = `*ELMIR GARAGE EQUIPMENT - Quote Inquiry*\n`;
     summary += `------------------------------------\n`;
     quoteItems.forEach((id, index) => {
       const item = catalog.find((x) => x.id === id);

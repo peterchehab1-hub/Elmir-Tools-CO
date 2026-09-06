@@ -1,6 +1,6 @@
-# Elmir / Garage Equipment - Online Automotive & Workshop Catalog
+# Elmir Garage Equipment - Online Automotive & Workshop Catalog
 
-Modern, responsive, bilingual (English & Arabic) online catalog for **Elmir / Garage Equipment**, showcasing 270+ professional automotive tools, garage machinery, hydraulic vehicle lifts, diagnostic scanners, and workshop equipment.
+Modern, responsive, bilingual (English & Arabic) online catalog for **Elmir Garage Equipment**, showcasing 270+ professional automotive tools, garage machinery, hydraulic vehicle lifts, diagnostic scanners, and workshop equipment.
 
 Designed and optimized for static hosting on **Cloudflare Pages** and deployment via **Git**.
 
