@@ -2052,26 +2052,24 @@ body.theme-light .brand-logo-img {
    ========================================================================== */
 
 /* Discrete Footer Admin Trigger */
-.footer-bottom-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+.footer-admin-row {
+  margin-top: 0.65rem;
 }
 
 .btn-discrete-admin {
-  background: transparent;
-  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
   color: var(--text-muted);
-  width: 28px;
   height: 28px;
+  padding: 0 0.65rem;
   border-radius: var(--radius-sm);
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.45rem;
   font-size: 0.75rem;
+  font-weight: 500;
   cursor: pointer;
-  opacity: 0.45;
+  opacity: 0.55;
   transition: var(--transition-normal);
 }
 
@@ -2080,7 +2078,7 @@ body.theme-light .brand-logo-img {
   color: var(--accent-blue-light);
   background: var(--accent-blue-subtle);
   border-color: rgba(37, 99, 235, 0.3);
-  transform: scale(1.05);
+  transform: translateY(-1px);
 }
 
 /* Admin Modals Base */
