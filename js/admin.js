@@ -221,6 +221,9 @@
                   </select>
                 </div>
                 <div class="admin-toolbar-right">
+                  <button id="adminAddNewCategoryQuickBtn" class="btn-admin-outline">
+                    <i class="fa-solid fa-folder-plus"></i> Add Category
+                  </button>
                   <button id="adminAddNewProductBtn" class="btn-admin-primary">
                     <i class="fa-solid fa-plus"></i> Add New Product
                   </button>
@@ -722,6 +725,11 @@
     // Product form triggers
     if (dom.addNewProductBtn) {
       dom.addNewProductBtn.addEventListener('click', openAddProductModal);
+    }
+    // Quick "Add Category" button in products toolbar
+    const quickAddCatBtn = document.getElementById('adminAddNewCategoryQuickBtn');
+    if (quickAddCatBtn) {
+      quickAddCatBtn.addEventListener('click', openAddCategoryModal);
     }
     if (dom.closeProductFormBtn) {
       dom.closeProductFormBtn.addEventListener('click', closeProductModal);
