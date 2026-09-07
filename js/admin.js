@@ -71,16 +71,32 @@
       categoriesData = [...DEFAULT_CATEGORIES];
     }
 
-    // 2. Load Catalog
+    // 2. Load Catalog (prefer localStorage, fallback to window.ElmirCatalog with retry)
     const savedCatalog = localStorage.getItem(STORAGE_KEY_CATALOG);
     if (savedCatalog) {
       try {
         catalogData = JSON.parse(savedCatalog);
+        return;
       } catch (e) {
         catalogData = [];
       }
-    } else if (window.ElmirCatalog && Array.isArray(window.ElmirCatalog)) {
+    }
+
+    // No localStorage catalog — try to get from app.js (may not be ready yet on first load)
+    if (window.ElmirCatalog && Array.isArray(window.ElmirCatalog) && window.ElmirCatalog.length > 0) {
       catalogData = JSON.parse(JSON.stringify(window.ElmirCatalog));
+    } else {
+      // Retry after app.js async fetch finishes (up to 5 seconds)
+      let retries = 0;
+      const wait = setInterval(() => {
+        retries++;
+        if (window.ElmirCatalog && Array.isArray(window.ElmirCatalog) && window.ElmirCatalog.length > 0) {
+          catalogData = JSON.parse(JSON.stringify(window.ElmirCatalog));
+          clearInterval(wait);
+        } else if (retries > 50) {
+          clearInterval(wait); // give up after 5s
+        }
+      }, 100);
     }
   }
 
