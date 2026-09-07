@@ -332,9 +332,15 @@
     <div class="footer-bottom">
       <div class="container footer-bottom-content">
         <p>© 2025 Elmir Garage Equipment. All rights reserved.</p>
-        <p class="powered-by">
-          <span>Fast Static Delivery via Cloudflare Pages</span>
-        </p>
+        <div class="footer-bottom-meta">
+          <p class="powered-by">
+            <span>Fast Static Delivery via Cloudflare Pages</span>
+          </p>
+          <!-- Discrete Admin Portal Trigger -->
+          <button id="adminDiscreteTriggerBtn" class="btn-discrete-admin" title="Admin Portal (Ctrl+Shift+A)" aria-label="Admin Portal">
+            <i class="fa-solid fa-shield-halved"></i>
+          </button>
+        </div>
       </div>
     </div>
   </footer>
@@ -344,5 +350,6 @@
 
   <!-- Application Logic -->
   <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
 </body>
 </html>

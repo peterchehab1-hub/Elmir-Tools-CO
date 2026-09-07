@@ -139,6 +139,9 @@
   };
 
   // --- State ---
+  const STORAGE_KEY_CATALOG = 'elmir_tools_catalog_data';
+  const STORAGE_KEY_CATEGORIES = 'elmir_tools_categories_data';
+
   let catalog = [];
   let currentLang = localStorage.getItem(STORAGE_KEY_LANG) || 'en';
   let currentTheme = localStorage.getItem(STORAGE_KEY_THEME) || 'dark';
@@ -149,8 +152,8 @@
   let viewMode = 'grid'; // 'grid' | 'list'
   let quoteItems = JSON.parse(localStorage.getItem(STORAGE_KEY_QUOTE) || '[]');
 
-  // --- Category Definitions ---
-  const CATEGORIES = [
+  // --- Category Definitions (Dynamic with Fallbacks) ---
+  const DEFAULT_CATEGORIES = [
     { id: 'all', icon: 'fa-cubes', en: 'All Categories', ar: 'جميع الفئات' },
     { id: 'lifting_equipment', icon: 'fa-arrows-up-down', en: 'Lifts & Lifting', ar: 'معدات الرفع والهيدروليك' },
     { id: 'wrenches_hand_tools', icon: 'fa-wrench', en: 'Wrenches & Sockets', ar: 'المفاتيح والطربوشات' },
@@ -162,6 +165,20 @@
     { id: 'pliers_cutters', icon: 'fa-scissors', en: 'Pliers & Cutters', ar: 'البنسات والقطاعات' },
     { id: 'workshop_storage', icon: 'fa-toolbox', en: 'Workshop & Press Tools', ar: 'معدات ومكابس الورشة' }
   ];
+
+  let CATEGORIES = loadCategories();
+
+  function loadCategories() {
+    const saved = localStorage.getItem(STORAGE_KEY_CATEGORIES);
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        return [...DEFAULT_CATEGORIES];
+      }
+    }
+    return [...DEFAULT_CATEGORIES];
+  }
 
   // --- DOM Elements ---
   const dom = {
@@ -218,12 +235,17 @@
     setLanguage(currentLang);
     bindEvents();
     await loadCatalog();
-    if (dom.totalCount) dom.totalCount.textContent = catalog.length;
-    if (dom.statToolsNum) dom.statToolsNum.textContent = catalog.length;
+    updateHeaderCounts();
     renderCategories();
     renderProducts();
     updateQuoteUI();
     checkUrlParams();
+  }
+
+  function updateHeaderCounts() {
+    const activeTotal = catalog.filter((it) => it.active !== false).length;
+    if (dom.totalCount) dom.totalCount.textContent = activeTotal;
+    if (dom.statToolsNum) dom.statToolsNum.textContent = activeTotal;
   }
 
   // --- Theme Management ---
@@ -246,14 +268,42 @@
 
   // --- Load Data ---
   async function loadCatalog() {
+    const saved = localStorage.getItem(STORAGE_KEY_CATALOG);
+    if (saved) {
+      try {
+        catalog = JSON.parse(saved);
+        window.ElmirCatalog = catalog;
+        return;
+      } catch (e) {
+        console.error('Error parsing stored catalog, fallback to fetch:', e);
+      }
+    }
+
     try {
       const res = await fetch('catalog.json');
       if (!res.ok) throw new Error('Network error loading catalog.json');
       catalog = await res.json();
+      window.ElmirCatalog = catalog;
     } catch (err) {
       console.error('Failed to load catalog.json:', err);
       showToast('Error loading catalog data. Please refresh.');
     }
+  }
+
+  // --- Live Reload for Admin Sync ---
+  function reloadApp() {
+    CATEGORIES = loadCategories();
+    const saved = localStorage.getItem(STORAGE_KEY_CATALOG);
+    if (saved) {
+      try {
+        catalog = JSON.parse(saved);
+      } catch (e) {}
+    }
+    updateHeaderCounts();
+    renderCategories();
+    renderProducts();
+    renderDrawerItems();
+    updateQuoteUI();
   }
 
   // --- Language Management ---
@@ -455,8 +505,8 @@
         btn.className = `cat-pill ${activeCategory === cat.id ? 'active' : ''}`;
         
         const count = cat.id === 'all' 
-          ? catalog.length 
-          : catalog.filter((item) => item.category_id === cat.id).length;
+          ? catalog.filter((item) => item.active !== false).length 
+          : catalog.filter((item) => item.category_id === cat.id && item.active !== false).length;
 
         const title = currentLang === 'ar' ? cat.ar : cat.en;
         btn.innerHTML = `
@@ -482,8 +532,8 @@
         itemBtn.type = 'button';
 
         const count = cat.id === 'all' 
-          ? catalog.length 
-          : catalog.filter((item) => item.category_id === cat.id).length;
+          ? catalog.filter((item) => item.active !== false).length 
+          : catalog.filter((item) => item.category_id === cat.id && item.active !== false).length;
 
         const title = currentLang === 'ar' ? cat.ar : cat.en;
         const subTitle = currentLang === 'ar' ? cat.en : cat.ar;
@@ -518,6 +568,11 @@
   // --- Filter & Sort Logic ---
   function getFilteredCatalog() {
     return catalog.filter((item) => {
+      // Inactive items are hidden on storefront
+      if (item.active === false) {
+        return false;
+      }
+
       // Category filter
       if (activeCategory !== 'all' && item.category_id !== activeCategory) {
         return false;
@@ -883,6 +938,12 @@
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#039;');
   }
+
+  // Export public API
+  window.ElmirApp = {
+    reload: reloadApp,
+    getCatalog: () => catalog
+  };
 
   // Initialize once DOM is ready
   if (document.readyState === 'loading') {
