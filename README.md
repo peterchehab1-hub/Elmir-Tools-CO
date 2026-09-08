@@ -1,6 +1,6 @@
 # Elmir Garage Equipment - Online Automotive & Workshop Catalog
 
-Modern, responsive, bilingual (English & Arabic) online catalog for **Elmir Garage Equipment**, showcasing 270+ professional automotive tools, garage machinery, hydraulic vehicle lifts, diagnostic scanners, and workshop equipment.
+Modern, responsive, bilingual (English & Arabic) online catalog for **Elmir Garage Equipment**, showcasing 299+ professional automotive tools, garage machinery, hydraulic vehicle lifts, diagnostic scanners, and workshop equipment.
 
 Designed and optimized for static hosting on **Cloudflare Pages** and deployment via **Git**.
 
@@ -11,10 +11,10 @@ Designed and optimized for static hosting on **Cloudflare Pages** and deployment
 - **GitHub Repository**: [https://github.com/peterchehab1-hub/Elmir-Tools-CO](https://github.com/peterchehab1-hub/Elmir-Tools-CO)
 
 ## ✨ Key Features
-- **271 Catalog Products**: Fully digitized data from official garage equipment catalogs and equipment sheets.
+- **299 Catalog Products**: Fully digitized data from official garage equipment catalogs, batch additions, and equipment sheets.
 - **Strict Price Filtering**: 100% compliant with zero pricing data exposed.
 - **Bilingual Interface**: Seamless English (LTR) and Arabic (RTL) switching with tailored typography (`Inter` & `Cairo`).
-- **Live Search & Filters**: Instant client-side search across English & Arabic names, Reference Numbers, Part Numbers (`ET-001` to `ET-271`), and specifications.
+- **Live Search & Filters**: Instant client-side search across English & Arabic names, Reference Numbers, Part Numbers (`ET-001` to `ET-299`), and specifications.
 - **Category Navigation**: 9 core categories with real-time product counts.
 - **Quote Request Cart**: Users can select multiple tools and generate an instant formatted inquiry message sent directly to WhatsApp (`+961 76 339 423`).
 - **Zero Pricing Exposed**: Adheres strictly to the quote-request workflow with no raw pricing displayed.

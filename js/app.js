@@ -22,7 +22,7 @@
       hero_badge: 'Official Equipment Catalog 2024-2025',
       hero_title_1: 'Professional Automotive',
       hero_title_2: 'Tools & Garage Machinery',
-      hero_desc: 'Browse our complete catalog of 258+ high-precision automotive workshop tools, heavy duty vehicle lifts, pneumatic impact guns, hydraulic presses, lubrication equipment, and diagnostic tools.',
+      hero_desc: 'Browse our complete catalog of 299+ high-precision automotive workshop tools, heavy duty vehicle lifts, pneumatic impact guns, hydraulic presses, lubrication equipment, and diagnostic tools.',
       stat_tools: 'Tools & Machines',
       stat_cats: 'Core Categories',
       stat_verified: 'Industrial Quality',
@@ -73,7 +73,22 @@
       mode_dark: 'Dark Mode',
       side_categories_tab: 'CATEGORIES',
       cat_drawer_title: 'Equipment Categories',
-      cat_drawer_sub: 'Browse by workshop equipment type'
+      cat_drawer_sub: 'Browse by workshop equipment type',
+      admin_btn: 'Admin',
+      cat_new_items: 'New Items',
+      promo_folder_tab: 'PROMOTIONAL FOLDER',
+      promo_live_badge: 'NEW ARRIVALS IN STOCK',
+      promo_tag: 'FRESH SUPPLIES & WORKSHOP TOOLS',
+      promo_title_1: 'New Items',
+      promo_title_2: '& Recent Arrivals',
+      promo_desc: 'Check out our newly stocked batch of professional automotive garage equipment, heavy-duty jacks, diagnostic scanners, and specialized mechanics tools ready for immediate garage deployment.',
+      promo_items_count: 'New Tools in Batch',
+      promo_mechanic_grade: 'Mechanic Grade',
+      promo_fast_delivery: 'Lebanon Delivery',
+      promo_btn_text: 'Explore New Items Folder',
+      promo_preview_heading: 'Featured in this batch:',
+      promo_fresh_badge: 'New Stock',
+      cat_pill_new_badge: 'NEW'
     },
     ar: {
       location: 'لبنان • طلبات واستفسارات لجميع المناطق',
@@ -83,7 +98,7 @@
       hero_badge: 'الكتالوج الرسمي المعتمد ٢٠٢٤-٢٠٢٥',
       hero_title_1: 'معدات وعدد سيارات',
       hero_title_2: 'احترافية للورش والميكانيك',
-      hero_desc: 'تصفح كتالوجنا الشامل الذي يضم أكثر من ٢٥٨ أداة ومعدة عالية الدقة لكراجات السيارات، بما في ذلك عوارف الرفع، مسدسات الهواء، المكابس الهيدروليكية، ومعدات سحب وتغيير الزيوت والفحص الحديثة.',
+      hero_desc: 'تصفح كتالوجنا الشامل الذي يضم أكثر من ٢٩٩ أداة ومعدة عالية الدقة لكراجات السيارات، بما في ذلك عوارف الرفع، مسدسات الهواء، المكابس الهيدروليكية، ومعدات سحب وتغيير الزيوت والفحص الحديثة.',
       stat_tools: 'أداة ومعدة',
       stat_cats: 'أقسام رئيسية',
       stat_verified: 'جودة صناعية ممتازة',
@@ -134,7 +149,22 @@
       mode_dark: 'الوضع الداكن',
       side_categories_tab: 'الأقسام',
       cat_drawer_title: 'أقسام المعدات والعدد',
-      cat_drawer_sub: 'تصفح حسب نوع المعدات والأدوات'
+      cat_drawer_sub: 'تصفح حسب نوع المعدات والأدوات',
+      admin_btn: 'لوحة التحكم',
+      cat_new_items: 'الأصناف الجديدة',
+      promo_folder_tab: 'ملف العروض والتوريدات',
+      promo_live_badge: 'وصل حديثاً للمستودع',
+      promo_tag: 'توريدات وأدوات ورش جديدة',
+      promo_title_1: 'الأصناف الجديدة',
+      promo_title_2: 'وأحدث وصول للمعدات',
+      promo_desc: 'تصفح أحدث دفعة توريدات وصلت حديثاً من معدات كراجات السيارات، الروافع الهيدروليكية، العدد الخاصة وأجهزة الفحص والتشخيص الجاهزة للتسليم الفوري.',
+      promo_items_count: 'صنفاً جديداً متوفراً',
+      promo_mechanic_grade: 'جودة ميكانيك صناعية',
+      promo_fast_delivery: 'توصيل لكافة مناطق لبنان',
+      promo_btn_text: 'تصفح أصناف الملف الجديد',
+      promo_preview_heading: 'أبرز الأصناف في هذه الدفعة:',
+      promo_fresh_badge: 'دفعة جديدة',
+      cat_pill_new_badge: 'جديد'
     }
   };
 
@@ -155,6 +185,7 @@
   // --- Category Definitions (Dynamic with Fallbacks) ---
   const DEFAULT_CATEGORIES = [
     { id: 'all', icon: 'fa-cubes', en: 'All Categories', ar: 'جميع الفئات' },
+    { id: 'new_items', icon: 'fa-star', en: 'New Items', ar: 'الأصناف الجديدة' },
     { id: 'lifting_equipment', icon: 'fa-arrows-up-down', en: 'Lifts & Lifting', ar: 'معدات الرفع والهيدروليك' },
     { id: 'wrenches_hand_tools', icon: 'fa-wrench', en: 'Wrenches & Sockets', ar: 'المفاتيح والطربوشات' },
     { id: 'pneumatic_air_tools', icon: 'fa-wind', en: 'Pneumatic & Air Tools', ar: 'معدات الهواء والكمبريسور' },
@@ -172,7 +203,20 @@
     const saved = localStorage.getItem(STORAGE_KEY_CATEGORIES);
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          if (!parsed.some((c) => c.id === 'new_items')) {
+            const allIdx = parsed.findIndex((c) => c.id === 'all');
+            const newItemCat = { id: 'new_items', icon: 'fa-star', en: 'New Items', ar: 'الأصناف الجديدة' };
+            if (allIdx > -1) {
+              parsed.splice(allIdx + 1, 0, newItemCat);
+            } else {
+              parsed.unshift(newItemCat);
+            }
+            try { localStorage.setItem(STORAGE_KEY_CATEGORIES, JSON.stringify(parsed)); } catch (e) {}
+          }
+          return parsed;
+        }
       } catch (e) {
         return [...DEFAULT_CATEGORIES];
       }
@@ -226,7 +270,12 @@
     homeLogo: document.getElementById('homeLogo'),
     footerCatsList: document.getElementById('footerCatsList'),
     totalCount: document.getElementById('totalCount'),
-    statToolsNum: document.getElementById('statToolsNum')
+    statToolsNum: document.getElementById('statToolsNum'),
+    statCatsNum: document.getElementById('statCatsNum'),
+    newItemsPromoFolder: document.getElementById('newItemsPromoFolder'),
+    btnExploreNewItems: document.getElementById('btnExploreNewItems'),
+    promoNewItemsCount: document.getElementById('promoNewItemsCount'),
+    promoPreviewGrid: document.getElementById('promoPreviewGrid')
   };
 
   // --- Initialization ---
@@ -237,6 +286,7 @@
     await loadCatalog();
     updateHeaderCounts();
     renderCategories();
+    renderPromoFolder();
     renderProducts();
     updateQuoteUI();
     checkUrlParams();
@@ -246,6 +296,8 @@
     const activeTotal = catalog.filter((it) => it.active !== false).length;
     if (dom.totalCount) dom.totalCount.textContent = activeTotal;
     if (dom.statToolsNum) dom.statToolsNum.textContent = activeTotal;
+    const catCount = CATEGORIES.filter((c) => c.id !== 'all').length;
+    if (dom.statCatsNum) dom.statCatsNum.textContent = catCount;
   }
 
   // --- Theme Management ---
@@ -268,24 +320,46 @@
 
   // --- Load Data ---
   async function loadCatalog() {
+    let localData = null;
     const saved = localStorage.getItem(STORAGE_KEY_CATALOG);
     if (saved) {
       try {
-        catalog = JSON.parse(saved);
-        window.ElmirCatalog = catalog;
-        return;
+        localData = JSON.parse(saved);
       } catch (e) {
-        console.error('Error parsing stored catalog, fallback to fetch:', e);
+        console.error('Error parsing stored catalog:', e);
       }
     }
 
     try {
       const res = await fetch('catalog.json');
-      if (!res.ok) throw new Error('Network error loading catalog.json');
-      catalog = await res.json();
-      window.ElmirCatalog = catalog;
+      if (res.ok) {
+        const fileCatalog = await res.json();
+        // If fileCatalog has newer/more items or category changes, adopt fileCatalog
+        const needsSync = !localData || !Array.isArray(localData) || 
+          fileCatalog.length > localData.length ||
+          fileCatalog.some(f => f.category_id === 'new_items' && !localData.some(l => l.category_id === 'new_items'));
+        
+        if (needsSync) {
+          catalog = fileCatalog;
+          try {
+            localStorage.setItem(STORAGE_KEY_CATALOG, JSON.stringify(catalog));
+          } catch (e) {
+            console.warn('LocalStorage quota or write error:', e);
+          }
+        } else {
+          catalog = localData;
+        }
+        window.ElmirCatalog = catalog;
+        return;
+      }
     } catch (err) {
-      console.error('Failed to load catalog.json:', err);
+      console.warn('Network fetch of catalog.json failed, falling back to cached storage:', err);
+    }
+
+    if (localData && Array.isArray(localData) && localData.length > 0) {
+      catalog = localData;
+      window.ElmirCatalog = catalog;
+    } else {
       showToast('Error loading catalog data. Please refresh.');
     }
   }
@@ -301,6 +375,7 @@
     }
     updateHeaderCounts();
     renderCategories();
+    renderPromoFolder();
     renderProducts();
     renderDrawerItems();
     updateQuoteUI();
@@ -333,6 +408,7 @@
     }
 
     renderCategories();
+    renderPromoFolder();
     renderProducts();
     renderDrawerItems();
   }
@@ -501,17 +577,22 @@
     if (dom.categoriesContainer) {
       dom.categoriesContainer.innerHTML = '';
       CATEGORIES.forEach((cat) => {
+        const isPromo = cat.id === 'new_items';
         const btn = document.createElement('button');
-        btn.className = `cat-pill ${activeCategory === cat.id ? 'active' : ''}`;
+        btn.className = `cat-pill ${activeCategory === cat.id ? 'active' : ''} ${isPromo ? 'cat-pill-promo' : ''}`;
         
         const count = cat.id === 'all' 
           ? catalog.filter((item) => item.active !== false).length 
           : catalog.filter((item) => item.category_id === cat.id && item.active !== false).length;
 
         const title = currentLang === 'ar' ? cat.ar : cat.en;
+        const iconClass = isPromo ? 'fa-fire text-amber' : cat.icon;
+        const promoBadge = isPromo ? `<span class="cat-pill-badge-promo" data-i18n="cat_pill_new_badge">${currentLang === 'ar' ? 'جديد' : 'NEW'}</span>` : '';
+
         btn.innerHTML = `
-          <i class="fa-solid ${cat.icon}"></i>
+          <i class="fa-solid ${iconClass}"></i>
           <span>${title}</span>
+          ${promoBadge}
           <span class="cat-pill-count">${count}</span>
         `;
 
@@ -527,8 +608,9 @@
     if (dom.catDrawerList) {
       dom.catDrawerList.innerHTML = '';
       CATEGORIES.forEach((cat) => {
+        const isPromo = cat.id === 'new_items';
         const itemBtn = document.createElement('button');
-        itemBtn.className = `cat-drawer-item ${activeCategory === cat.id ? 'active' : ''}`;
+        itemBtn.className = `cat-drawer-item ${activeCategory === cat.id ? 'active' : ''} ${isPromo ? 'cat-drawer-item-promo' : ''}`;
         itemBtn.type = 'button';
 
         const count = cat.id === 'all' 
@@ -537,14 +619,16 @@
 
         const title = currentLang === 'ar' ? cat.ar : cat.en;
         const subTitle = currentLang === 'ar' ? cat.en : cat.ar;
+        const iconClass = isPromo ? 'fa-fire text-amber' : cat.icon;
+        const promoTag = isPromo ? `<span class="cat-pill-badge-promo" style="margin-left: 0.4rem; margin-right: 0.4rem;">${currentLang === 'ar' ? 'جديد' : 'NEW'}</span>` : '';
 
         itemBtn.innerHTML = `
           <div class="cat-drawer-item-left">
             <div class="cat-drawer-item-icon">
-              <i class="fa-solid ${cat.icon}"></i>
+              <i class="fa-solid ${iconClass}"></i>
             </div>
             <div class="cat-drawer-item-labels">
-              <span class="cat-drawer-item-title">${title}</span>
+              <span class="cat-drawer-item-title">${title} ${promoTag}</span>
               <span class="cat-drawer-item-sub">${subTitle}</span>
             </div>
           </div>
@@ -562,6 +646,67 @@
 
         dom.catDrawerList.appendChild(itemBtn);
       });
+    }
+  }
+
+  // --- Top Promotional Showcase Folder (New Items) ---
+  function renderPromoFolder() {
+    const promoSection = document.getElementById('newItemsPromoFolder');
+    if (!promoSection) return;
+
+    const newItems = catalog.filter((item) => item.category_id === 'new_items' && item.active !== false);
+    
+    // Update count display
+    const countEl = document.getElementById('promoNewItemsCount');
+    if (countEl) {
+      countEl.textContent = newItems.length;
+    }
+
+    // Render Preview Cards (featured 4 items from new_items)
+    const previewGrid = document.getElementById('promoPreviewGrid');
+    if (previewGrid) {
+      previewGrid.innerHTML = '';
+      const featured = newItems.slice(0, 4);
+      featured.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'promo-preview-card';
+        const name = currentLang === 'ar' ? (item.name_ar || item.name_en) : (item.name_en || item.name_ar);
+        card.innerHTML = `
+          <div class="promo-preview-img-wrap">
+            <img src="${escapeHtml(item.image)}" alt="${escapeHtml(name)}" loading="lazy" onerror="this.src='images/logo.png'">
+            <span class="promo-preview-tag">${escapeHtml(item.part_number || 'NEW')}</span>
+          </div>
+          <div class="promo-preview-meta">
+            <span class="promo-preview-name" title="${escapeHtml(name)}">${escapeHtml(name)}</span>
+            <button type="button" class="btn-promo-quick-view" data-id="${item.id}" aria-label="View tool details">
+              <i class="fa-solid fa-eye"></i> <span>${currentLang === 'ar' ? 'عرض' : 'View'}</span>
+            </button>
+          </div>
+        `;
+        // Clicking the card opens the item modal
+        card.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openProductModal(item.id);
+        });
+        previewGrid.appendChild(card);
+      });
+    }
+
+    // Wire explore button to filter to 'new_items' and scroll
+    const exploreBtn = document.getElementById('btnExploreNewItems');
+    if (exploreBtn) {
+      exploreBtn.onclick = () => {
+        setCategory('new_items');
+        const categoriesContainer = document.getElementById('categoriesContainer');
+        if (categoriesContainer) {
+          categoriesContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        const promoPill = dom.categoriesContainer ? dom.categoriesContainer.querySelector('.cat-pill-promo') : null;
+        if (promoPill) {
+          promoPill.classList.add('pulse-highlight');
+          setTimeout(() => promoPill.classList.remove('pulse-highlight'), 1200);
+        }
+      };
     }
   }
 
