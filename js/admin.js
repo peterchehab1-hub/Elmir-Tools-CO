@@ -430,20 +430,23 @@
               <!-- Left Column: Primary Details -->
               <div class="admin-form-col">
                 <div class="admin-form-group">
-                  <label for="prodNameEn">Product Name (English) *</label>
-                  <input type="text" id="prodNameEn" required placeholder="e.g. 1/2-inch Pneumatic Impact Wrench">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                    <label for="prodNameEn" style="margin-bottom: 0;">Product Name (English)</label>
+                    <span style="font-size: 0.72rem; color: var(--accent-blue-light); font-weight: 600;"><i class="fa-solid fa-arrows-rotate"></i> Auto-Syncs</span>
+                  </div>
+                  <input type="text" id="prodNameEn" placeholder="Type in English (auto-translates Arabic)...">
                 </div>
 
                 <div class="admin-form-group">
                   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-                    <label for="prodNameAr" style="margin-bottom: 0;">Product Name (Arabic) *</label>
-                    <button type="button" id="btnAutoTranslateProdName" class="btn-admin-outline btn-sm" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-color: var(--accent-blue-light); color: var(--accent-blue-light);" title="Auto-translate product name to Arabic">
-                      <i class="fa-solid fa-language"></i> Auto-Translate
+                    <label for="prodNameAr" style="margin-bottom: 0;">Product Name (Arabic)</label>
+                    <button type="button" id="btnAutoTranslateProdName" class="btn-admin-outline btn-sm" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-color: var(--accent-blue-light); color: var(--accent-blue-light);" title="Auto-translate name in both directions">
+                      <i class="fa-solid fa-language"></i> Translate
                     </button>
                   </div>
-                  <input type="text" id="prodNameAr" required placeholder="e.g. مسدس هواء فك براغي ١/٢ انش" dir="rtl">
+                  <input type="text" id="prodNameAr" placeholder="اكتب بالعربية (يترجم تلقائياً للإنجليزية)..." dir="rtl">
                   <small id="prodNameTranslateNotice" class="admin-helper-text" style="color: var(--accent-blue-light); display: none;">
-                    <i class="fa-solid fa-circle-notch fa-spin"></i> Translating product name to Arabic...
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> Translating...
                   </small>
                 </div>
 
@@ -500,19 +503,19 @@
 
                 <div class="admin-form-group">
                   <label for="prodDescEn">Description (English)</label>
-                  <textarea id="prodDescEn" rows="3" placeholder="Detailed product specifications, build quality, and automotive usage..."></textarea>
+                  <textarea id="prodDescEn" rows="3" placeholder="English specifications & usage (auto-translates Arabic)..."></textarea>
                 </div>
 
                 <div class="admin-form-group">
                   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
                     <label for="prodDescAr" style="margin-bottom: 0;">Description (Arabic)</label>
-                    <button type="button" id="btnAutoTranslateProdDesc" class="btn-admin-outline btn-sm" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-color: var(--accent-blue-light); color: var(--accent-blue-light);" title="Auto-translate description to Arabic">
-                      <i class="fa-solid fa-language"></i> Auto-Translate
+                    <button type="button" id="btnAutoTranslateProdDesc" class="btn-admin-outline btn-sm" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-color: var(--accent-blue-light); color: var(--accent-blue-light);" title="Auto-translate description in both directions">
+                      <i class="fa-solid fa-language"></i> Translate
                     </button>
                   </div>
-                  <textarea id="prodDescAr" rows="3" placeholder="وصف مفصل للمعدة، الاستخدامات في الورش، وجودة التصنيع..." dir="rtl"></textarea>
+                  <textarea id="prodDescAr" rows="3" placeholder="الوصف بالعربية والمواصفات (يترجم تلقائياً للإنجليزية)..." dir="rtl"></textarea>
                   <small id="prodDescTranslateNotice" class="admin-helper-text" style="color: var(--accent-blue-light); display: none;">
-                    <i class="fa-solid fa-circle-notch fa-spin"></i> Translating description to Arabic...
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> Translating...
                   </small>
                 </div>
               </div>
@@ -520,7 +523,7 @@
             </div>
 
             <div class="admin-form-actions">
-              <button type="button" id="btnAutoTranslateAllProd" class="btn-admin-outline btn-sm" style="margin-right: auto; padding: 0.4rem 0.75rem; border-color: var(--accent-blue-light); color: var(--accent-blue-light);" title="Translate both Name and Description to Arabic">
+              <button type="button" id="btnAutoTranslateAllProd" class="btn-admin-outline btn-sm" style="margin-right: auto; padding: 0.4rem 0.75rem; border-color: var(--accent-blue-light); color: var(--accent-blue-light);" title="Translate all missing fields bidirectionally">
                 <i class="fa-solid fa-wand-magic-sparkles"></i> Auto-Translate All
               </button>
               <button type="button" id="cancelProductFormBtn" class="btn-admin-outline">Cancel</button>
@@ -544,25 +547,28 @@
           <form id="adminCategoryForm" class="admin-product-form">
             <div class="admin-form-group">
               <label for="catSlugInput">Category Identifier / Slug (Optional)</label>
-              <input type="text" id="catSlugInput" placeholder="e.g. New Items (optional, allows spaces & capitals)">
+              <input type="text" id="catSlugInput" placeholder="e.g. New Items (optional, auto-generated)">
               <small class="admin-helper-text">Accepts letters, spaces, or capitals — automatically formatted in the background.</small>
             </div>
 
             <div class="admin-form-group">
-              <label for="catNameEnInput">Category Name (English) *</label>
-              <input type="text" id="catNameEnInput" required placeholder="e.g. Battery Chargers & Jump Starters">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <label for="catNameEnInput" style="margin-bottom: 0;">Category Name (English)</label>
+                <span style="font-size: 0.72rem; color: var(--accent-blue-light); font-weight: 600;"><i class="fa-solid fa-arrows-rotate"></i> Auto-Syncs</span>
+              </div>
+              <input type="text" id="catNameEnInput" placeholder="Type in English (auto-translates Arabic)...">
             </div>
 
             <div class="admin-form-group">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-                <label for="catNameArInput" style="margin-bottom: 0;">Category Name (Arabic) *</label>
-                <button type="button" id="btnAutoTranslateCat" class="btn-admin-outline btn-sm" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-color: var(--accent-blue-light); color: var(--accent-blue-light);">
-                  <i class="fa-solid fa-language"></i> Auto-Translate
+                <label for="catNameArInput" style="margin-bottom: 0;">Category Name (Arabic)</label>
+                <button type="button" id="btnAutoTranslateCat" class="btn-admin-outline btn-sm" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-color: var(--accent-blue-light); color: var(--accent-blue-light);" title="Auto-translate in both directions">
+                  <i class="fa-solid fa-language"></i> Translate
                 </button>
               </div>
-              <input type="text" id="catNameArInput" required placeholder="e.g. شواحن البطاريات واجهزة الإقلاع" dir="rtl">
+              <input type="text" id="catNameArInput" placeholder="اكتب بالعربية (يترجم تلقائياً للإنجليزية)..." dir="rtl">
               <small id="catTranslateNotice" class="admin-helper-text" style="color: var(--accent-blue-light); display: none;">
-                <i class="fa-solid fa-circle-notch fa-spin"></i> Translating to Arabic automatically...
+                <i class="fa-solid fa-circle-notch fa-spin"></i> Translating...
               </small>
             </div>
 
@@ -810,120 +816,216 @@
       dom.productForm.addEventListener('submit', handleSaveProduct);
     }
 
-    // Auto-translate for Product Name
-    let prodNameTranslateTimeout = null;
-    let prodNameArUserEdited = false;
-    if (dom.prodNameAr) {
-      dom.prodNameAr.addEventListener('input', () => {
-        prodNameArUserEdited = true;
-      });
-    }
+    // --- Bidirectional Auto-Translate for Product Name ---
+    let prodNameEnTimer = null;
+    let prodNameArTimer = null;
+    let isTranslatingProdName = false;
+
     if (dom.prodNameEn) {
       dom.prodNameEn.addEventListener('input', () => {
-        clearTimeout(prodNameTranslateTimeout);
+        if (isTranslatingProdName) return;
+        clearTimeout(prodNameEnTimer);
         const enVal = dom.prodNameEn.value.trim();
-        if (!enVal) {
-          if (!prodNameArUserEdited && dom.prodNameAr) dom.prodNameAr.value = '';
-          return;
-        }
-        prodNameTranslateTimeout = setTimeout(async () => {
-          if (prodNameArUserEdited && dom.prodNameAr && dom.prodNameAr.value.trim()) return;
-          if (dom.prodNameTranslateNotice) dom.prodNameTranslateNotice.style.display = 'block';
+        if (!enVal) return;
+
+        prodNameEnTimer = setTimeout(async () => {
+          if (document.activeElement === dom.prodNameAr) return;
+          if (dom.prodNameTranslateNotice) {
+            dom.prodNameTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating to Arabic...';
+            dom.prodNameTranslateNotice.style.display = 'block';
+          }
+          isTranslatingProdName = true;
           const ar = await autoTranslateToArabic(enVal);
+          isTranslatingProdName = false;
           if (dom.prodNameTranslateNotice) dom.prodNameTranslateNotice.style.display = 'none';
-          if (ar && dom.prodNameAr && (!prodNameArUserEdited || !dom.prodNameAr.value.trim())) {
+          if (ar && dom.prodNameAr && document.activeElement !== dom.prodNameAr) {
             dom.prodNameAr.value = ar;
           }
-        }, 650);
+        }, 450);
       });
     }
+
+    if (dom.prodNameAr) {
+      dom.prodNameAr.addEventListener('input', () => {
+        if (isTranslatingProdName) return;
+        clearTimeout(prodNameArTimer);
+        const arVal = dom.prodNameAr.value.trim();
+        if (!arVal) return;
+
+        prodNameArTimer = setTimeout(async () => {
+          if (document.activeElement === dom.prodNameEn) return;
+          if (dom.prodNameTranslateNotice) {
+            dom.prodNameTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating to English...';
+            dom.prodNameTranslateNotice.style.display = 'block';
+          }
+          isTranslatingProdName = true;
+          const en = await autoTranslateToEnglish(arVal);
+          isTranslatingProdName = false;
+          if (dom.prodNameTranslateNotice) dom.prodNameTranslateNotice.style.display = 'none';
+          if (en && dom.prodNameEn && document.activeElement !== dom.prodNameEn) {
+            dom.prodNameEn.value = en;
+          }
+        }, 450);
+      });
+    }
+
     if (dom.btnAutoTranslateProdName) {
       dom.btnAutoTranslateProdName.addEventListener('click', async () => {
         const enVal = dom.prodNameEn ? dom.prodNameEn.value.trim() : '';
-        if (!enVal) {
-          alert('Please enter an English product name first.');
+        const arVal = dom.prodNameAr ? dom.prodNameAr.value.trim() : '';
+        if (!enVal && !arVal) {
+          alert('Please enter a product name in English or Arabic first.');
           return;
         }
-        if (dom.prodNameTranslateNotice) dom.prodNameTranslateNotice.style.display = 'block';
         dom.btnAutoTranslateProdName.disabled = true;
-        const ar = await autoTranslateToArabic(enVal);
+        if (dom.prodNameTranslateNotice) {
+          dom.prodNameTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating...';
+          dom.prodNameTranslateNotice.style.display = 'block';
+        }
+
+        if (enVal && !arVal) {
+          const ar = await autoTranslateToArabic(enVal);
+          if (ar && dom.prodNameAr) dom.prodNameAr.value = ar;
+        } else if (arVal && !enVal) {
+          const en = await autoTranslateToEnglish(arVal);
+          if (en && dom.prodNameEn) dom.prodNameEn.value = en;
+        } else if (enVal) {
+          const ar = await autoTranslateToArabic(enVal);
+          if (ar && dom.prodNameAr) dom.prodNameAr.value = ar;
+        }
+
         if (dom.prodNameTranslateNotice) dom.prodNameTranslateNotice.style.display = 'none';
         dom.btnAutoTranslateProdName.disabled = false;
-        if (ar && dom.prodNameAr) {
-          dom.prodNameAr.value = ar;
-          prodNameArUserEdited = false;
-        }
+        showAdminToast('Product name synced between languages!', 'success');
       });
     }
 
-    // Auto-translate for Product Description
-    let prodDescTranslateTimeout = null;
-    let prodDescArUserEdited = false;
-    if (dom.prodDescAr) {
-      dom.prodDescAr.addEventListener('input', () => {
-        prodDescArUserEdited = true;
-      });
-    }
+    // --- Bidirectional Auto-Translate for Product Description ---
+    let prodDescEnTimer = null;
+    let prodDescArTimer = null;
+    let isTranslatingProdDesc = false;
+
     if (dom.prodDescEn) {
       dom.prodDescEn.addEventListener('input', () => {
-        clearTimeout(prodDescTranslateTimeout);
+        if (isTranslatingProdDesc) return;
+        clearTimeout(prodDescEnTimer);
         const enVal = dom.prodDescEn.value.trim();
-        if (!enVal) {
-          if (!prodDescArUserEdited && dom.prodDescAr) dom.prodDescAr.value = '';
-          return;
-        }
-        prodDescTranslateTimeout = setTimeout(async () => {
-          if (prodDescArUserEdited && dom.prodDescAr && dom.prodDescAr.value.trim()) return;
-          if (dom.prodDescTranslateNotice) dom.prodDescTranslateNotice.style.display = 'block';
+        if (!enVal) return;
+
+        prodDescEnTimer = setTimeout(async () => {
+          if (document.activeElement === dom.prodDescAr) return;
+          if (dom.prodDescTranslateNotice) {
+            dom.prodDescTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating to Arabic...';
+            dom.prodDescTranslateNotice.style.display = 'block';
+          }
+          isTranslatingProdDesc = true;
           const ar = await autoTranslateToArabic(enVal);
+          isTranslatingProdDesc = false;
           if (dom.prodDescTranslateNotice) dom.prodDescTranslateNotice.style.display = 'none';
-          if (ar && dom.prodDescAr && (!prodDescArUserEdited || !dom.prodDescAr.value.trim())) {
+          if (ar && dom.prodDescAr && document.activeElement !== dom.prodDescAr) {
             dom.prodDescAr.value = ar;
           }
-        }, 750);
+        }, 550);
       });
     }
+
+    if (dom.prodDescAr) {
+      dom.prodDescAr.addEventListener('input', () => {
+        if (isTranslatingProdDesc) return;
+        clearTimeout(prodDescArTimer);
+        const arVal = dom.prodDescAr.value.trim();
+        if (!arVal) return;
+
+        prodDescArTimer = setTimeout(async () => {
+          if (document.activeElement === dom.prodDescEn) return;
+          if (dom.prodDescTranslateNotice) {
+            dom.prodDescTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating to English...';
+            dom.prodDescTranslateNotice.style.display = 'block';
+          }
+          isTranslatingProdDesc = true;
+          const en = await autoTranslateToEnglish(arVal);
+          isTranslatingProdDesc = false;
+          if (dom.prodDescTranslateNotice) dom.prodDescTranslateNotice.style.display = 'none';
+          if (en && dom.prodDescEn && document.activeElement !== dom.prodDescEn) {
+            dom.prodDescEn.value = en;
+          }
+        }, 550);
+      });
+    }
+
     if (dom.btnAutoTranslateProdDesc) {
       dom.btnAutoTranslateProdDesc.addEventListener('click', async () => {
         const enVal = dom.prodDescEn ? dom.prodDescEn.value.trim() : '';
-        if (!enVal) {
-          alert('Please enter an English product description first.');
+        const arVal = dom.prodDescAr ? dom.prodDescAr.value.trim() : '';
+        if (!enVal && !arVal) {
+          alert('Please enter a product description in English or Arabic first.');
           return;
         }
-        if (dom.prodDescTranslateNotice) dom.prodDescTranslateNotice.style.display = 'block';
         dom.btnAutoTranslateProdDesc.disabled = true;
-        const ar = await autoTranslateToArabic(enVal);
+        if (dom.prodDescTranslateNotice) {
+          dom.prodDescTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating...';
+          dom.prodDescTranslateNotice.style.display = 'block';
+        }
+
+        if (enVal && !arVal) {
+          const ar = await autoTranslateToArabic(enVal);
+          if (ar && dom.prodDescAr) dom.prodDescAr.value = ar;
+        } else if (arVal && !enVal) {
+          const en = await autoTranslateToEnglish(arVal);
+          if (en && dom.prodDescEn) dom.prodDescEn.value = en;
+        } else if (enVal) {
+          const ar = await autoTranslateToArabic(enVal);
+          if (ar && dom.prodDescAr) dom.prodDescAr.value = ar;
+        }
+
         if (dom.prodDescTranslateNotice) dom.prodDescTranslateNotice.style.display = 'none';
         dom.btnAutoTranslateProdDesc.disabled = false;
-        if (ar && dom.prodDescAr) {
-          dom.prodDescAr.value = ar;
-          prodDescArUserEdited = false;
-        }
+        showAdminToast('Product description synced between languages!', 'success');
       });
     }
 
-    // Master Auto-Translate All button (Name + Desc)
+    // Master Auto-Translate All button (Bidirectional)
     if (dom.btnAutoTranslateAllProd) {
       dom.btnAutoTranslateAllProd.addEventListener('click', async () => {
         const nameEn = dom.prodNameEn ? dom.prodNameEn.value.trim() : '';
+        const nameAr = dom.prodNameAr ? dom.prodNameAr.value.trim() : '';
         const descEn = dom.prodDescEn ? dom.prodDescEn.value.trim() : '';
-        if (!nameEn && !descEn) {
-          alert('Please enter an English product name or description first.');
+        const descAr = dom.prodDescAr ? dom.prodDescAr.value.trim() : '';
+
+        if (!nameEn && !nameAr && !descEn && !descAr) {
+          alert('Please enter a product name or description in either English or Arabic first.');
           return;
         }
+
         dom.btnAutoTranslateAllProd.disabled = true;
-        if (dom.prodNameTranslateNotice) dom.prodNameTranslateNotice.style.display = 'block';
-        if (dom.prodDescTranslateNotice) dom.prodDescTranslateNotice.style.display = 'block';
+        if (dom.prodNameTranslateNotice) {
+          dom.prodNameTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating...';
+          dom.prodNameTranslateNotice.style.display = 'block';
+        }
+        if (dom.prodDescTranslateNotice) {
+          dom.prodDescTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating...';
+          dom.prodDescTranslateNotice.style.display = 'block';
+        }
 
         const promises = [];
-        if (nameEn) promises.push(autoTranslateToArabic(nameEn).then((ar) => { if (dom.prodNameAr && ar) dom.prodNameAr.value = ar; }));
-        if (descEn) promises.push(autoTranslateToArabic(descEn).then((ar) => { if (dom.prodDescAr && ar) dom.prodDescAr.value = ar; }));
+        if (nameEn && !nameAr) {
+          promises.push(autoTranslateToArabic(nameEn).then((ar) => { if (dom.prodNameAr && ar) dom.prodNameAr.value = ar; }));
+        } else if (nameAr && !nameEn) {
+          promises.push(autoTranslateToEnglish(nameAr).then((en) => { if (dom.prodNameEn && en) dom.prodNameEn.value = en; }));
+        }
+
+        if (descEn && !descAr) {
+          promises.push(autoTranslateToArabic(descEn).then((ar) => { if (dom.prodDescAr && ar) dom.prodDescAr.value = ar; }));
+        } else if (descAr && !descEn) {
+          promises.push(autoTranslateToEnglish(descAr).then((en) => { if (dom.prodDescEn && en) dom.prodDescEn.value = en; }));
+        }
+
         await Promise.all(promises);
 
         if (dom.prodNameTranslateNotice) dom.prodNameTranslateNotice.style.display = 'none';
         if (dom.prodDescTranslateNotice) dom.prodDescTranslateNotice.style.display = 'none';
         dom.btnAutoTranslateAllProd.disabled = false;
-        showAdminToast('Auto-translated product details to Arabic!', 'success');
+        showAdminToast('All fields auto-translated and synced!', 'success');
       });
     }
 
@@ -1010,8 +1112,10 @@
       });
     });
 
-    // Auto-translation and forgiving slug generation for category form
-    let translateTimer = null;
+    // --- Bidirectional Auto-Translation for Category Form ---
+    let catTranslateEnTimer = null;
+    let catTranslateArTimer = null;
+    let isTranslatingCat = false;
     let userEditedSlug = false;
 
     if (dom.catSlugInput) {
@@ -1023,40 +1127,94 @@
     if (dom.catNameEnInput) {
       dom.catNameEnInput.addEventListener('input', (e) => {
         const val = e.target.value;
-        // If user hasn't manually typed their own slug, auto-format slug
         if (!userEditedSlug && dom.catSlugInput && !dom.catSlugInput.disabled) {
           dom.catSlugInput.value = val.toLowerCase().replace(/[\s-]+/g, '_').replace(/[^a-z0-9_]/g, '');
         }
 
-        // Debounced auto-translate to Arabic (500ms)
-        clearTimeout(translateTimer);
-        translateTimer = setTimeout(async () => {
-          if (!val.trim()) return;
-          if (dom.catTranslateNotice) dom.catTranslateNotice.style.display = 'block';
-          const ar = await autoTranslateToArabic(val);
-          if (ar && dom.catNameArInput) {
+        if (isTranslatingCat) return;
+        clearTimeout(catTranslateEnTimer);
+        const enVal = val.trim();
+        if (!enVal) return;
+
+        catTranslateEnTimer = setTimeout(async () => {
+          if (document.activeElement === dom.catNameArInput) return;
+          if (dom.catTranslateNotice) {
+            dom.catTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating to Arabic...';
+            dom.catTranslateNotice.style.display = 'block';
+          }
+          isTranslatingCat = true;
+          const ar = await autoTranslateToArabic(enVal);
+          isTranslatingCat = false;
+          if (dom.catTranslateNotice) dom.catTranslateNotice.style.display = 'none';
+          if (ar && dom.catNameArInput && document.activeElement !== dom.catNameArInput) {
             dom.catNameArInput.value = ar;
           }
+        }, 450);
+      });
+    }
+
+    if (dom.catNameArInput) {
+      dom.catNameArInput.addEventListener('input', (e) => {
+        if (isTranslatingCat) return;
+        clearTimeout(catTranslateArTimer);
+        const arVal = e.target.value.trim();
+        if (!arVal) return;
+
+        catTranslateArTimer = setTimeout(async () => {
+          if (document.activeElement === dom.catNameEnInput) return;
+          if (dom.catTranslateNotice) {
+            dom.catTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating to English...';
+            dom.catTranslateNotice.style.display = 'block';
+          }
+          isTranslatingCat = true;
+          const en = await autoTranslateToEnglish(arVal);
+          isTranslatingCat = false;
           if (dom.catTranslateNotice) dom.catTranslateNotice.style.display = 'none';
-        }, 500);
+          if (en && dom.catNameEnInput && document.activeElement !== dom.catNameEnInput) {
+            dom.catNameEnInput.value = en;
+            if (!userEditedSlug && dom.catSlugInput && !dom.catSlugInput.disabled) {
+              dom.catSlugInput.value = en.toLowerCase().replace(/[\s-]+/g, '_').replace(/[^a-z0-9_]/g, '');
+            }
+          }
+        }, 450);
       });
     }
 
     if (dom.btnAutoTranslateCat) {
       dom.btnAutoTranslateCat.addEventListener('click', async (e) => {
         e.preventDefault();
-        const val = dom.catNameEnInput ? dom.catNameEnInput.value.trim() : '';
-        if (!val) {
-          showAdminToast('Please enter an English category name first', 'warning');
+        const enVal = dom.catNameEnInput ? dom.catNameEnInput.value.trim() : '';
+        const arVal = dom.catNameArInput ? dom.catNameArInput.value.trim() : '';
+        if (!enVal && !arVal) {
+          showAdminToast('Please enter a category name in English or Arabic first', 'warning');
           return;
         }
-        if (dom.catTranslateNotice) dom.catTranslateNotice.style.display = 'block';
-        const ar = await autoTranslateToArabic(val);
-        if (ar && dom.catNameArInput) {
-          dom.catNameArInput.value = ar;
-          showAdminToast('Category name translated to Arabic!', 'success');
+
+        dom.btnAutoTranslateCat.disabled = true;
+        if (dom.catTranslateNotice) {
+          dom.catTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating...';
+          dom.catTranslateNotice.style.display = 'block';
         }
+
+        if (enVal && !arVal) {
+          const ar = await autoTranslateToArabic(enVal);
+          if (ar && dom.catNameArInput) dom.catNameArInput.value = ar;
+        } else if (arVal && !enVal) {
+          const en = await autoTranslateToEnglish(arVal);
+          if (en && dom.catNameEnInput) {
+            dom.catNameEnInput.value = en;
+            if (!userEditedSlug && dom.catSlugInput && !dom.catSlugInput.disabled) {
+              dom.catSlugInput.value = en.toLowerCase().replace(/[\s-]+/g, '_').replace(/[^a-z0-9_]/g, '');
+            }
+          }
+        } else if (enVal) {
+          const ar = await autoTranslateToArabic(enVal);
+          if (ar && dom.catNameArInput) dom.catNameArInput.value = ar;
+        }
+
         if (dom.catTranslateNotice) dom.catTranslateNotice.style.display = 'none';
+        dom.btnAutoTranslateCat.disabled = false;
+        showAdminToast('Category name synced between languages!', 'success');
       });
     }
 
@@ -1432,20 +1590,70 @@
     dom.productModal.style.display = 'none';
   }
 
-  function handleSaveProduct(e) {
+  async function handleSaveProduct(e) {
     e.preventDefault();
 
     const id = parseInt(dom.prodRefNo.value.trim(), 10);
-    const nameEn = dom.prodNameEn.value.trim();
-    const nameAr = dom.prodNameAr.value.trim();
+    let nameEn = dom.prodNameEn ? dom.prodNameEn.value.trim() : '';
+    let nameAr = dom.prodNameAr ? dom.prodNameAr.value.trim() : '';
+
+    // If user only typed in one language, automatically translate to the other on save!
+    if (!nameEn && nameAr) {
+      if (dom.prodNameTranslateNotice) {
+        dom.prodNameTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating to English...';
+        dom.prodNameTranslateNotice.style.display = 'block';
+      }
+      nameEn = await autoTranslateToEnglish(nameAr);
+      if (dom.prodNameEn) dom.prodNameEn.value = nameEn;
+      if (dom.prodNameTranslateNotice) dom.prodNameTranslateNotice.style.display = 'none';
+    } else if (nameEn && !nameAr) {
+      if (dom.prodNameTranslateNotice) {
+        dom.prodNameTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating to Arabic...';
+        dom.prodNameTranslateNotice.style.display = 'block';
+      }
+      nameAr = await autoTranslateToArabic(nameEn);
+      if (dom.prodNameAr) dom.prodNameAr.value = nameAr;
+      if (dom.prodNameTranslateNotice) dom.prodNameTranslateNotice.style.display = 'none';
+    }
+
+    if (!nameEn && !nameAr) {
+      alert('Please enter a product name in either English or Arabic.');
+      if (dom.prodNameEn) dom.prodNameEn.focus();
+      return;
+    }
+
+    let descEn = dom.prodDescEn ? dom.prodDescEn.value.trim() : '';
+    let descAr = dom.prodDescAr ? dom.prodDescAr.value.trim() : '';
+
+    if (!descEn && descAr) {
+      if (dom.prodDescTranslateNotice) {
+        dom.prodDescTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating to English...';
+        dom.prodDescTranslateNotice.style.display = 'block';
+      }
+      descEn = await autoTranslateToEnglish(descAr);
+      if (dom.prodDescEn) dom.prodDescEn.value = descEn;
+      if (dom.prodDescTranslateNotice) dom.prodDescTranslateNotice.style.display = 'none';
+    } else if (descEn && !descAr) {
+      if (dom.prodDescTranslateNotice) {
+        dom.prodDescTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating to Arabic...';
+        dom.prodDescTranslateNotice.style.display = 'block';
+      }
+      descAr = await autoTranslateToArabic(descEn);
+      if (dom.prodDescAr) dom.prodDescAr.value = descAr;
+      if (dom.prodDescTranslateNotice) dom.prodDescTranslateNotice.style.display = 'none';
+    }
+
+    if (!descEn && !descAr) {
+      descEn = `Professional grade ${nameEn} for automotive service.`;
+      descAr = `معدة احترافية ${nameAr} مصممة لخدمات ورش السيارات.`;
+    }
+
     const partNo = dom.prodPartNo.value.trim();
     const catId = dom.prodCategory.value;
     const catObj = categoriesData.find((c) => c.id === catId);
     const specs = dom.prodSpecs.value.split(',').map((s) => s.trim()).filter(Boolean);
     const isActive = dom.prodIsActive.checked;
     const imgUrl = dom.prodImageUrl.value.trim() || 'images/logo.png';
-    const descEn = dom.prodDescEn.value.trim() || `Professional grade ${nameEn} for automotive service.`;
-    const descAr = dom.prodDescAr.value.trim() || `معدة احترافية ${nameAr} مصممة لخدمات ورش السيارات.`;
 
     if (editingProductId !== null) {
       // Update existing
@@ -1580,40 +1788,59 @@
     });
   }
 
-  // --- Auto-Translate Helper for Categories ---
-  async function autoTranslateToArabic(text) {
+  // --- Bidirectional Auto-Translate Engine (Arabic & English) ---
+  const AUTO_DICT_EN_TO_AR = {
+    'new items': 'الأصناف الجديدة',
+    'new item': 'صنف جديد',
+    'new arrivals': 'وصل حديثاً',
+    'new arrival': 'وصل حديثاً',
+    'new supplies': 'البضاعة الجديدة',
+    'new tools': 'العدد الجديدة',
+    'tools': 'العدد والأدوات',
+    'hand tools': 'العدد اليدوية',
+    'power tools': 'العدد الكهربائية',
+    'air tools': 'معدات الهواء',
+    'pneumatic tools': 'معدات الهواء والكمبريسور',
+    'pneumatic & air tools': 'معدات الهواء والكمبريسور',
+    'battery chargers': 'شواحن البطاريات وأجهزة الإقلاع',
+    'jump starters': 'أجهزة الإقلاع وبوستر البطاريات',
+    'diagnostic tools': 'أجهزة الفحص والتشخيص',
+    'diagnostic & electrical': 'الفحص والتشخيص والكهرباء',
+    'specialty tools': 'العدد الخاصة والمميزة',
+    'oil service': 'خدمة المحرك وسحب السوائل',
+    'engine & fluid service': 'خدمة المحرك وسحب السوائل',
+    'brake tools': 'عدد ومعدات الفرامل',
+    'suspension tools': 'عدد العفشة والمساعدين',
+    'welding machines': 'ماكينات اللحام والتجليس',
+    'body repair & welding': 'الحدادة والتجليس واللحام',
+    'tire & wheel service': 'خدمة الإطارات والمكابح',
+    'pliers & cutters': 'البنسات والقطاعات',
+    'workshop storage': 'معدات ومكابس الورشة',
+    'workshop & press tools': 'معدات ومكابس الورشة',
+    'lifting equipment': 'معدات الرفع والهيدروليك',
+    'lifts & lifting': 'معدات الرفع والهيدروليك',
+    'wrenches & sockets': 'المفاتيح والطربوشات',
+    'wrenches & socket sets': 'المفاتيح والطربوشات'
+  };
+
+  const AUTO_DICT_AR_TO_EN = {};
+  for (const [en, ar] of Object.entries(AUTO_DICT_EN_TO_AR)) {
+    AUTO_DICT_AR_TO_EN[ar.trim()] = en.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+  }
+
+  async function autoTranslate(text, targetLang = 'ar', sourceLang = 'auto') {
     if (!text || !text.trim()) return '';
     const trimmed = text.trim();
-
-    // Fast dictionary lookup for automotive and tool categories
-    const DICT = {
-      'new items': 'الأصناف الجديدة',
-      'new item': 'صنف جديد',
-      'new arrivals': 'وصل حديثاً',
-      'new arrival': 'وصل حديثاً',
-      'new supplies': 'البضاعة الجديدة',
-      'new tools': 'العدد الجديدة',
-      'tools': 'العدد والأدوات',
-      'hand tools': 'العدد اليدوية',
-      'power tools': 'العدد الكهربائية',
-      'air tools': 'معدات الهواء',
-      'pneumatic tools': 'معدات الهواء والكمبريسور',
-      'battery chargers': 'شواحن البطاريات وأجهزة الإقلاع',
-      'jump starters': 'أجهزة الإقلاع وبوستر البطاريات',
-      'diagnostic tools': 'أجهزة الفحص والتشخيص',
-      'specialty tools': 'العدد الخاصة والمميزة',
-      'oil service': 'خدمة المحرك وسحب السوائل',
-      'brake tools': 'عدد ومعدات الفرامل',
-      'suspension tools': 'عدد العفشة والمساعدين',
-      'welding machines': 'ماكينات اللحام والتجليس',
-      'workshop storage': 'معدات ومكابس الورشة',
-      'lifting equipment': 'معدات الرفع والهيدروليك'
-    };
     const lower = trimmed.toLowerCase();
-    if (DICT[lower]) return DICT[lower];
+
+    if (targetLang === 'ar') {
+      if (AUTO_DICT_EN_TO_AR[lower]) return AUTO_DICT_EN_TO_AR[lower];
+    } else if (targetLang === 'en') {
+      if (AUTO_DICT_AR_TO_EN[trimmed]) return AUTO_DICT_AR_TO_EN[trimmed];
+    }
 
     try {
-      const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q=${encodeURIComponent(trimmed)}`;
+      const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(trimmed)}`;
       const res = await fetch(url);
       if (res.ok) {
         const data = await res.json();
@@ -1623,9 +1850,35 @@
         }
       }
     } catch (err) {
-      console.warn('Auto-translation network request failed:', err);
+      console.warn(`Translation request (${sourceLang} -> ${targetLang}) failed via primary engine, trying fallback:`, err);
+    }
+
+    // Secondary translation provider (MyMemory API)
+    try {
+      const sLang = sourceLang === 'auto' ? (targetLang === 'ar' ? 'en' : 'ar') : sourceLang;
+      const fbUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(trimmed)}&langpair=${sLang}|${targetLang}`;
+      const fbRes = await fetch(fbUrl);
+      if (fbRes.ok) {
+        const fbData = await fbRes.json();
+        if (fbData && fbData.responseData && fbData.responseData.translatedText) {
+          const fbText = fbData.responseData.translatedText.trim();
+          if (fbText && !fbText.toUpperCase().includes('QUERY LENGTH LIMIT EXCEEDED')) {
+            return fbText;
+          }
+        }
+      }
+    } catch (fbErr) {
+      console.warn(`Secondary translation fallback failed:`, fbErr);
     }
     return '';
+  }
+
+  async function autoTranslateToArabic(text) {
+    return autoTranslate(text, 'ar', 'en');
+  }
+
+  async function autoTranslateToEnglish(text) {
+    return autoTranslate(text, 'en', 'ar');
   }
 
   function openAddCategoryModal() {
@@ -1660,15 +1913,41 @@
     dom.categoryModal.style.display = 'none';
   }
 
-  function handleSaveCategory(e) {
+  async function handleSaveCategory(e) {
     e.preventDefault();
+    let nameEn = dom.catNameEnInput ? dom.catNameEnInput.value.trim() : '';
+    let nameAr = dom.catNameArInput ? dom.catNameArInput.value.trim() : '';
+
+    // If user only provided one language, auto-translate the other on save!
+    if (!nameEn && nameAr) {
+      if (dom.catTranslateNotice) {
+        dom.catTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating to English...';
+        dom.catTranslateNotice.style.display = 'block';
+      }
+      nameEn = await autoTranslateToEnglish(nameAr);
+      if (dom.catNameEnInput) dom.catNameEnInput.value = nameEn;
+      if (dom.catTranslateNotice) dom.catTranslateNotice.style.display = 'none';
+    } else if (nameEn && !nameAr) {
+      if (dom.catTranslateNotice) {
+        dom.catTranslateNotice.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Translating to Arabic...';
+        dom.catTranslateNotice.style.display = 'block';
+      }
+      nameAr = await autoTranslateToArabic(nameEn);
+      if (dom.catNameArInput) dom.catNameArInput.value = nameAr;
+      if (dom.catTranslateNotice) dom.catTranslateNotice.style.display = 'none';
+    }
+
+    if (!nameEn && !nameAr) {
+      alert('Please enter a category name in either English or Arabic.');
+      if (dom.catNameEnInput) dom.catNameEnInput.focus();
+      return;
+    }
+
     let rawSlug = dom.catSlugInput ? dom.catSlugInput.value.trim() : '';
-    const nameEn = dom.catNameEnInput.value.trim();
-    const nameAr = dom.catNameArInput.value.trim();
     const icon = dom.catIconInput.value.trim() || 'fa-wrench';
 
     if (!rawSlug) {
-      rawSlug = nameEn;
+      rawSlug = nameEn || nameAr;
     }
     // Forgiving slug processing: allow capitals, spaces, punctuation without error
     let slug = rawSlug.toLowerCase().replace(/[\s-]+/g, '_').replace(/[^a-z0-9_]/g, '').replace(/_+/g, '_').replace(/^_+|_+$/g, '');
