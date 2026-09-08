@@ -85,7 +85,7 @@
       promo_items_count: 'New Tools in Batch',
       promo_mechanic_grade: 'Mechanic Grade',
       promo_fast_delivery: 'Lebanon Delivery',
-      promo_btn_text: 'Explore New Items Folder',
+      promo_btn_text: 'Explore New Items',
       promo_preview_heading: 'Featured in this batch:',
       promo_fresh_badge: 'New Stock',
       cat_pill_new_badge: 'NEW'
@@ -156,12 +156,12 @@
       promo_live_badge: 'وصل حديثاً للمستودع',
       promo_tag: 'توريدات وأدوات ورش جديدة',
       promo_title_1: 'الأصناف الجديدة',
-      promo_title_2: 'وأحدث وصول للمعدات',
+      promo_title_2: ' وأحدث وصول للمعدات',
       promo_desc: 'تصفح أحدث دفعة توريدات وصلت حديثاً من معدات كراجات السيارات، الروافع الهيدروليكية، العدد الخاصة وأجهزة الفحص والتشخيص الجاهزة للتسليم الفوري.',
       promo_items_count: 'صنفاً جديداً متوفراً',
       promo_mechanic_grade: 'جودة ميكانيك صناعية',
       promo_fast_delivery: 'توصيل لكافة مناطق لبنان',
-      promo_btn_text: 'تصفح أصناف الملف الجديد',
+      promo_btn_text: 'تصفح الأصناف الجديدة',
       promo_preview_heading: 'أبرز الأصناف في هذه الدفعة:',
       promo_fresh_badge: 'دفعة جديدة',
       cat_pill_new_badge: 'جديد'
@@ -586,7 +586,7 @@
           : catalog.filter((item) => item.category_id === cat.id && item.active !== false).length;
 
         const title = currentLang === 'ar' ? cat.ar : cat.en;
-        const iconClass = isPromo ? 'fa-fire text-amber' : cat.icon;
+        const iconClass = isPromo ? 'fa-star text-blue' : cat.icon;
         const promoBadge = isPromo ? `<span class="cat-pill-badge-promo" data-i18n="cat_pill_new_badge">${currentLang === 'ar' ? 'جديد' : 'NEW'}</span>` : '';
 
         btn.innerHTML = `
@@ -619,7 +619,7 @@
 
         const title = currentLang === 'ar' ? cat.ar : cat.en;
         const subTitle = currentLang === 'ar' ? cat.en : cat.ar;
-        const iconClass = isPromo ? 'fa-fire text-amber' : cat.icon;
+        const iconClass = isPromo ? 'fa-star text-blue' : cat.icon;
         const promoTag = isPromo ? `<span class="cat-pill-badge-promo" style="margin-left: 0.4rem; margin-right: 0.4rem;">${currentLang === 'ar' ? 'جديد' : 'NEW'}</span>` : '';
 
         itemBtn.innerHTML = `
